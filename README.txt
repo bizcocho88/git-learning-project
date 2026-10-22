@@ -20,3 +20,5 @@ Git reminder
 Git tracks snapshots of your project. A commit is a named snapshot.
 A branch is a movable pointer to a line of work. A remote is another copy
 of the repository, often hosted on GitHub.
+
+Edited directly on GitHub for pull practice.
