@@ -1,7 +1,7 @@
 """A tiny task tracker used for Git practice."""
 
 tasks = [
-    {"title": "Learn git status", "done": False},
+    {"title": "Learn GitHub collaboration", "done": False},
     {"title": "Make my first commit", "done": False},
     {"title": "Practice branching", "done": False},
 ]
