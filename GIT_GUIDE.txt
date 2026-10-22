@@ -1,0 +1,159 @@
+GIT BOOTCAMP — FOLLOW IN ORDER
+==============================
+
+Before you start
+----------------
+Install Git and Python. Open a terminal in this folder.
+Check:
+    git --version
+    python --version
+If your system uses python3, use that instead of python.
+
+LESSON 1 — Initialize and inspect
+---------------------------------
+This folder is already populated, but is NOT initialized as a Git repo.
+Run these commands from inside this folder:
+
+    git init
+    git status
+
+What happened? Git created a hidden .git directory to store repository
+history. git status shows files that Git is not tracking yet.
+
+LESSON 2 — Stage and commit
+---------------------------
+    git add README.txt tasks.py NOTES.txt GIT_GUIDE.txt
+    git status
+    git commit -m "Add starter task tracker"
+
+A commit is a snapshot. The staging area lets you choose what goes into it.
+If Git asks who you are, configure a name and email:
+    git config --global user.name "Your Name"
+    git config --global user.email "you@example.com"
+Then retry the commit.
+
+Inspect history:
+    git log --oneline
+
+LESSON 3 — Create a branch and make a change
+--------------------------------------------
+    git switch -c feature/add-third-task
+
+Open tasks.py and add this dictionary as a third item in the tasks list:
+    {"title": "Practice branching", "done": False},
+
+Save, then run:
+    python tasks.py
+    git diff
+    git add tasks.py
+    git commit -m "Add branching task"
+    git log --oneline --decorate
+
+A branch lets you work separately without changing the main branch yet.
+
+LESSON 4 — Merge the branch
+---------------------------
+    git switch main
+If your Git uses "master" as its initial branch, use:
+    git branch -M main
+Then:
+    git switch main
+Merge:
+    git merge feature/add-third-task
+    git log --oneline --graph --all
+
+The change from the feature branch is now included in main.
+If Git says there is nothing to merge, check which branch you are on and
+whether you committed the feature change.
+
+LESSON 5 — Publish to GitHub (push)
+-----------------------------------
+1. On GitHub, create a NEW empty repository named git-learning-project.
+   Do not initialize it with a README or license for this exercise.
+2. Copy its HTTPS URL, then run (replace URL with your real URL):
+    git remote add origin https://github.com/YOUR-USERNAME/git-learning-project.git
+    git remote -v
+    git push -u origin main
+
+GitHub may ask you to authenticate in a browser or through Git Credential
+Manager. Use GitHub's supported sign-in flow; your account password is not
+your Git password. Never paste tokens into shared notes or chat.
+
+LESSON 6 — Pull a change from GitHub
+------------------------------------
+1. On GitHub, open README.txt and click the pencil/edit icon.
+2. Add a line such as: "Edited directly on GitHub for pull practice."
+3. Commit the edit on GitHub.
+4. Back in your terminal:
+    git pull origin main
+5. Open README.txt and confirm the new line arrived.
+
+Pull fetches remote changes and integrates them into your current branch.
+If you have local uncommitted changes, commit or stash them before pulling.
+
+LESSON 7 — Create a merge conflict on purpose
+---------------------------------------------
+We'll edit the SAME line differently in two places.
+
+A. On your computer, make sure main is up to date:
+    git switch main
+    git pull origin main
+
+B. Edit the first task title in tasks.py to:
+    {"title": "Learn Git locally", "done": False},
+Commit it:
+    git add tasks.py
+    git commit -m "Update first task locally"
+
+C. On GitHub, edit that SAME first task title in tasks.py to:
+    {"title": "Learn GitHub collaboration", "done": False},
+Commit the change on GitHub.
+
+D. Pull the remote change:
+    git pull origin main
+
+Git should report a conflict because both sides changed the same line.
+If it doesn't, verify that you edited the exact same line and that both
+changes were committed independently.
+
+E. Resolve the conflict:
+Open tasks.py. Git marks the conflict with lines like:
+    <<<<<<< HEAD
+    your local version
+    =======
+    incoming GitHub version
+    >>>>>>> ...
+
+Delete the marker lines and choose the final content you want, for example:
+    {"title": "Learn Git locally and on GitHub", "done": False},
+
+Save the file, then:
+    git status
+    git add tasks.py
+    git commit -m "Resolve task title conflict"
+    git push origin main
+
+The conflict markers must not remain in the finished file.
+
+Useful commands
+---------------
+    git status                  # what's changed?
+    git diff                    # inspect unstaged edits
+    git diff --staged            # inspect staged edits
+    git log --oneline --graph --all
+    git branch                  # list branches
+    git switch NAME             # switch branches
+    git switch -c NAME          # create and switch
+    git merge NAME              # merge NAME into current branch
+    git remote -v               # show remotes
+    git fetch                   # download remote history without merging
+    git pull                    # fetch + integrate
+    git push                    # send commits to remote
+
+If something goes wrong
+-----------------------
+- Check git status first; it often tells you what to do next.
+- Abort an in-progress merge only if you want to discard the merge attempt:
+      git merge --abort
+- For a pull conflict, resolve the files, git add them, then git commit.
+- Avoid git reset --hard during practice; it can discard work.

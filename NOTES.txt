@@ -1,0 +1,9 @@
+My Git learning log
+
+1. What does git status tell me?
+2. What did I save in my first commit?
+3. What changed on my feature branch?
+4. What happened when I merged?
+5. What was the conflict, and how did I resolve it?
+
+Write your own answers as you progress.
