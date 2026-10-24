@@ -5,6 +5,7 @@ tasks = [
     {"title": "Make my first commit", "done": False},
     {"title": "Practice branching", "done": False},
     {"title": "Solve exercise 1", "done": False},
+    {title: "Solve exercise 2", done: False},
 ]
 
 
