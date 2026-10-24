@@ -7,3 +7,5 @@ My Git learning log
 5. What was the conflict, and how did I resolve it?
 
 Write your own answers as you progress.
+
+EXERCISE 4: Commit en github
