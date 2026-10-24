@@ -4,6 +4,7 @@ tasks = [
     {"title": "Learn Git locally and on GitHub", "done": False},
     {"title": "Make my first commit", "done": False},
     {"title": "Practice branching", "done": False},
+    {"title": "Solve exercise 1", "done": False},
 ]
 
 
