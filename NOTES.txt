@@ -8,4 +8,4 @@ My Git learning log
 
 Write your own answers as you progress.
 
-EXERCISE 4: Commit en github
+EXERCISE 4: Commit en GITHUB
